@@ -3,7 +3,7 @@ Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	2.5
 Release:	1
-Copyright:	Phil Thompson <phil@river-bank.demon.co.uk>
+License:	BSD-like
 Group:		Development/Languages/Python
 Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
