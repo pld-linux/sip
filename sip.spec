@@ -9,6 +9,7 @@ Release:	1
 License:	GPL
 Group:		Development/Languages/Python
 Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
+# Source0-md5:	f8593ad47f9b5edf789887b619b43a6a
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python >= 2.2
 BuildRequires:	python-devel >= 2.2
