@@ -1,5 +1,5 @@
 %include        /usr/lib/rpm/macros.python
-Summary:	Python bindings generator for C++ class libraries.
+Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.1
@@ -9,8 +9,11 @@ Group:		Development/Languages/Python
 Source0:	http://www.riverbankcomputing.co.uk/download/sip/%{name}-%{version}.tar.gz
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 Requires:	python >= 2.2
-BuildRequires:	flex
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bison
+BuildRequires:	flex
+BuildRequires:	libtool
 BuildRequires:	qt-devel
 BuildRequires:  rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -29,6 +32,11 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 %setup -q
 
 %build
+rm -f missing
+libtoolize --copy --force
+aclocal
+autoconf
+automake -a -c -f
 %configure \
 	--with-qt-includes=%{_prefix}/X11R6/include/qt \
 	--with-qt-libraries=%{_prefix}/X11R6/lib
