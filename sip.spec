@@ -1,13 +1,13 @@
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
-Version:	4.1.1
-Release:	2
+Version:	4.2
+Release:	1
 Epoch:		2
-License:	GPL
+License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
 Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-%{version}.tar.gz
-# Source0-md5:	f9dc81a7726305af114fede6c4107ce6
+# Source0-md5:	b884cc15228a166c9d6fc88aaaeccc96
 # Source0:	http://www.river-bank.demon.co.uk/download/snapshots/sip/%{name}-snapshot-%{_snap}.tar.gz
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python-devel >= 2.2
@@ -70,7 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog NEWS README THANKS
+%doc ChangeLog LICENSE NEWS README THANKS
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{py_sitedir}/sip.so
 %{py_sitedir}/sipconfig.py
