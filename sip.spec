@@ -1,6 +1,6 @@
 # TODO:
-# - %build shouldn't use $RPM_BUILD_ROOT
 # - libsip.so.* is built with evil RPATH (inside buildroot)
+# - Does %{py_sitedir}/libsip.so needs ldconfig ?
 
 %include        /usr/lib/rpm/macros.python
 Summary:	Python bindings generator for C++ class libraries
@@ -8,7 +8,7 @@ Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.11
 %define		_snap       	20040218
-Release:	0.%{_snap}.3
+Release:	0.%{_snap}.4
 License:	GPL
 Group:		Development/Languages/Python
 # Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
@@ -19,7 +19,6 @@ URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	rpm-pythonprov
-BuildRequires:	sed >= 4.0
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,24 +39,19 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 %setup -q -n %{name}-snapshot-%{_snap}
 
 %build
-rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir},%{_bindir},%{py_libdir}}
 
-echo 'yes' | python build.py \
-	-i %{_includedir}/qt -q %{_prefix} -l qt-mt -m /usr/bin/make \
-	-r %{_libdir} -t %{py_libdir} \
-	-b $RPM_BUILD_ROOT%{_bindir} -d $RPM_BUILD_ROOT%{py_sitedir} \
-	-e $RPM_BUILD_ROOT%{py_incdir}
+python configure.py \
+	-b %{_bindir} -d %{py_sitedir} \
+	-e %{py_incdir} \
+	-l qt-mt \
 
-
-%{__make}
-sed -i "s:$RPM_BUILD_ROOT::g" sipconfig.py
+%{__make} 
 
 %install
-install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir},%{_sipfilesdir}}
-install sipconfig.py $RPM_BUILD_ROOT%{py_sitedir}
+rm -rf $RPM_BUILD_ROOT
 
-%{__make} install
+%{__make} DESTDIR=$RPM_BUILD_ROOT install
+install -d $RPM_BUILD_ROOT%{_sipfilesdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
