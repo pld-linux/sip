@@ -10,6 +10,7 @@ Group:		Development/Languages/Python
 Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python >= 2.2
+BuildRequires:	python-devel >= 2.2
 BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python
