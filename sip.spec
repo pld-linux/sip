@@ -1,4 +1,3 @@
-%include        /usr/lib/rpm/macros.python
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
