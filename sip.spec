@@ -1,9 +1,14 @@
+# TODO:
+# - Build fail with: 
+#     QMAKESPEC has not been set, so configuration cannot be deduced. 
+#     Error processing project file: qttest.pro
+
 %include        /usr/lib/rpm/macros.python
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.5
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		Development/Languages/Python
 Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
@@ -13,6 +18,8 @@ BuildRequires:	qt-devel
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define          _prefix         /usr/X11R6
 
 %description
 Generates Python bindings for C++ class libraries from a set of class
