@@ -1,0 +1,33 @@
+diff -urN sip-3.3.orig/build.py sip-3.3/build.py
+--- sip-3.3.orig/build.py	Sun Jul  7 21:53:05 2002
++++ sip-3.3/build.py	Tue Jul  9 22:59:21 2002
+@@ -719,8 +719,8 @@
+     if ismod:
+         global platPyIncDir, platCopy
+ 
+-        f.write("\t-%s sip.h %s\n" % (platCopy,platPyIncDir))
+-        f.write("\t-%s sipQt.h %s\n" % (platCopy,platPyIncDir))
++        f.write("\t-%s sip.h %s\n" % (platCopy,escape(target_dest)+platPyIncDir))
++        f.write("\t-%s sipQt.h %s\n" % (platCopy,escape(target_dest)+platPyIncDir))
+ 
+     f.close()
+ 
+@@ -739,7 +739,7 @@
+     initGlobals()
+ 
+     try:
+-        optlist, args = getopt.getopt(argv[1:],"hb:d:g:i:l:m:q:wx")
++	    optlist, args = getopt.getopt(argv[1:],"hb:d:g:i:l:m:q:wxt:")
+     except getopt.GetoptError:
+         usage()
+ 
+@@ -780,6 +780,9 @@
+         elif opt == "-x":
+             global qtVersion
+             qtVersion = -1
++        elif opt == "-t":
++            global target_dest
++            target_dest=arg
+ 
+     installChecks()
+     maindir = mkTempBuildDir()
