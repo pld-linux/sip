@@ -4,7 +4,7 @@ Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.11
 %define		_snap       	20040218
-Release:	0.%{_snap}.6
+Release:	0.%{_snap}.7
 License:	GPL
 Group:		Development/Languages/Python
 # Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
@@ -46,7 +46,8 @@ python configure.py \
 	-d %{py_sitedir} \
 	-e %{py_incdir} \
 	-l qt-mt \
-	LIBDIR_QT="%{_libdir}"
+	LIBDIR_QT="%{_libdir}" \
+	LIBDIR_X11="/usr/X11R6/%{_lib}"
 
 %{__make} -C sipgen \
 	CC="%{__cc}" \
@@ -54,8 +55,10 @@ python configure.py \
 	LINK="%{__cc}"
 
 %{__make} -C siplib \
+	CC="%{__cc}" \
 	CXX="%{__cxx}" \
-	CXXFLAGS="%{rpmcflags} -fPIC -pipe -w" \
+	CFLAGS="%{rpmcflags} -fPIC -pipe -w -D_REENTRANT" \
+	CXXFLAGS="%{rpmcflags} -fPIC -pipe -w -D_REENTRANT" \
 	LINK="%{__cxx}"
 
 %install
