@@ -8,11 +8,11 @@ License:	BSD-like
 Group:		Development/Languages/Python
 Source0:	http://www.riverbankcomputing.co.uk/download/sip/%{name}-%{version}.tar.gz
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
-Patch0:		sip-build.patch
+Patch0:		%{name}-build.patch
 Requires:	python >= 2.2
 BuildRequires:	qt-devel
-BuildRequires:  rpm-pythonprov
-BuildRequires:  python
+BuildRequires:	rpm-pythonprov
+BuildRequires:	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,18 +31,18 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 
 %build
 
-QMAKESPEC=/usr/X11R6/share/qt/mkspecs/linux-g++
+QMAKESPEC=%{_prefix}/X11R6/share/qt/mkspecs/linux-g++
 export QMAKESPEC
-install -d  $RPM_BUILD_ROOT/usr/lib/python2.2/site-packages
-install -d $RPM_BUILD_ROOT/usr/include/python2.2
+install -d  $RPM_BUILD_ROOT%{_libdir}/python2.2/site-packages
+install -d $RPM_BUILD_ROOT%{_includedir}/python2.2
 
-python build.py -b /usr/bin  -i /usr/X11R6/include/qt -q /usr/X11R6/ -l qt  -m /usr/bin/make  -b $RPM_BUILD_ROOT/usr/bin/ -d $RPM_BUILD_ROOT/usr/lib/python2.2/site-packages -t $RPM_BUILD_ROOT
+python build.py -b %{_bindir} -i %{_prefix}/X11R6/include/qt -q %{_prefix}/X11R6/ -l qt -m %{_bindir}/make -b $RPM_BUILD_ROOT%{_bindir}/ -d $RPM_BUILD_ROOT%{_libdir}/python2.2/site-packages -t $RPM_BUILD_ROOT
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d  $RPM_BUILD_ROOT/usr/lib/python2.2/site-packages
-install -d $RPM_BUILD_ROOT/usr/include/python2.2
+install -d  $RPM_BUILD_ROOT%{_libdir}/python2.2/site-packages
+install -d $RPM_BUILD_ROOT%{_includedir}/python2.2
 
 %{__make} install
 
