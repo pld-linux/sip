@@ -35,8 +35,8 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 rm -f missing
 libtoolize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure \
 	--with-qt-includes=%{_prefix}/X11R6/include/qt \
 	--with-qt-libraries=%{_prefix}/X11R6/lib
