@@ -9,8 +9,8 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
 Source0:	http://www.river-bank.demon.co.uk/software/%{name}-%{version}.tar.gz
 URL:		http://www.thekompany.com/projects/pykde/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Requires:	python >= 1.5
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Generates Python bindings for C++ class libraries from a set of class
@@ -26,7 +26,9 @@ wszystkich wygenerowanych powi±zañ.
 %setup -q
 
 %build
-./configure --prefix=%{_prefix}
+%configure \
+	--prefix=%{_prefix}
+
 %{__make}
 
 %install
