@@ -5,8 +5,6 @@ Version:	3.0
 Release:	1
 License:	BSD-like
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(pl):	Programowanie/Jêzyki/Python
 Source0:	http://www.river-bank.demon.co.uk/software/%{name}-%{version}.tar.gz
 URL:		http://www.thekompany.com/projects/pykde/
 Requires:	python >= 1.5
