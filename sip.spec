@@ -1,7 +1,7 @@
 Summary:	Python bindings generator for C++ class libraries.
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
-Version:	2.5
+Version:	3.0
 Release:	1
 License:	BSD-like
 Group:		Development/Languages/Python
@@ -48,4 +48,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libsip.a
 %attr(755,root,root) %{_libdir}/libsip.la
 %attr(755,root,root) %{_libdir}/libsip.so
-%attr(755,root,root) %{_libdir}/libsip.so.6.0.0
+%attr(755,root,root) %{_libdir}/libsip.so.7
+%attr(755,root,root) %{_libdir}/libsip.so.7.0.0
