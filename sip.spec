@@ -17,8 +17,8 @@ all generated bindings.
 
 %description -l pl
 Generuje powi±zania Pythona z bibliotekami klas C++ ze zbioru plików
-ze specyfikacjami klas. Zawiera te¿ bibliotekê potrzebn± do uruchomienia
-wszystkich wygenerowanych powi±zañ.
+ze specyfikacjami klas. Zawiera te¿ bibliotekê potrzebn± do
+uruchomienia wszystkich wygenerowanych powi±zañ.
 
 %prep
 %setup -q
