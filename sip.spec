@@ -2,15 +2,16 @@
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
-Version:	3.11
-%define		_snap       	20040218
-Release:	0.%{_snap}.7
+Epoch:  	2
+Version:	3.10.1
+#%%define		_snap       	20040218
+#%Release:	0.%{_snap}.7
+Release:	1
 License:	GPL
 Group:		Development/Languages/Python
-# Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
-# http://www.river-bank.demon.co.uk/download/snapshots/sip/sip-snapshot-20040218.tar.gz
-Source0:	http://www.river-bank.demon.co.uk/download/snapshots/sip/%{name}-snapshot-%{_snap}.tar.gz
-# Source0-md5:	73dd4a8be8e75fb1a44e46280030e0f2
+Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-%{version}.tar.gz
+# Source0-md5:	7d7faa17422cd3e7b27d449ffbc9cd0f
+# Source0:	http://www.river-bank.demon.co.uk/download/snapshots/sip/%{name}-snapshot-%{_snap}.tar.gz
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	qt-devel >= 3.1.2
@@ -32,8 +33,8 @@ ze specyfikacjami klas. Zawiera te¿ bibliotekê potrzebn± do
 uruchomienia wszystkich wygenerowanych powi±zañ.
 
 %prep
-#%%setup -q -n %{name}-x11-gpl-%{version}
-%setup -q -n %{name}-snapshot-%{_snap}
+%setup -q 
+#%%setup -q -n %{name}-snapshot-%{_snap}
 
 %build
 # configure.py notes:
