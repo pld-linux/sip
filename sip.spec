@@ -6,7 +6,7 @@ Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.8
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Languages/Python
 Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
@@ -34,7 +34,7 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 %setup -q -n %{name}-x11-gpl-%{version}
 
 %build
-install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir}}
+install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir},%{_bindir},%{py_libdir}}
 
 echo 'yes' | python build.py \
 	-i %{_includedir}/qt -q %{_prefix} -l qt-mt -m /usr/bin/make \
@@ -45,7 +45,6 @@ echo 'yes' | python build.py \
 %{__make}
 
 %install
-rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir},%{_sipfilesdir}}
 
 %{__make} install
