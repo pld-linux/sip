@@ -1,7 +1,3 @@
-# TODO:
-# - Build fail with: 
-#     QMAKESPEC has not been set, so configuration cannot be deduced. 
-#     Error processing project file: qttest.pro
 
 %include        /usr/lib/rpm/macros.python
 Summary:	Python bindings generator for C++ class libraries
@@ -14,7 +10,7 @@ Group:		Development/Languages/Python
 Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python >= 2.2
-BuildRequires:	qt-devel
+BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
