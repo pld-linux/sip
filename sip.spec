@@ -11,6 +11,7 @@ URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 Requires:	python >= 2.2
 BuildRequires:	flex
 BuildRequires:	bison
+BuildRequires:	qt-devel
 BuildRequires:  rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -28,7 +29,9 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 %setup -q
 
 %build
-%configure
+%configure \
+	--with-qt-includes=%{_prefix}/X11R6/include/qt \
+	--with-qt-libraries=%{_prefix}/X11R6/lib
 %{__make}
 
 %install
