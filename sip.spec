@@ -1,13 +1,17 @@
+%include        /usr/lib/rpm/macros.python
 Summary:	Python bindings generator for C++ class libraries.
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
-Version:	3.0
+Version:	3.1
 Release:	1
 License:	BSD-like
 Group:		Development/Languages/Python
-Source0:	http://www.river-bank.demon.co.uk/software/%{name}-%{version}.tar.gz
-URL:		http://www.thekompany.com/projects/pykde/
-Requires:	python >= 1.5
+Source0:	http://www.riverbankcomputing.co.uk/download/sip/%{name}-%{version}.tar.gz
+URL:		http://www.riverbankcomputing.co.uk/sip/index.php
+Requires:	python >= 2.2
+BuildRequires:	flex
+BuildRequires:	bison
+BuildRequires:  rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,29 +28,22 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 %setup -q
 
 %build
-%configure \
-	--prefix=%{_prefix}
-
+%configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-%post	-p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+gzip -9nf AUTHORS NEWS README THANKS TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/sip
-%dir %{_includedir}
-%{_includedir}/sip/sip.h
-%{_includedir}/sip/sipQt.h
-%{_libdir}/libsip.a
-%attr(755,root,root) %{_libdir}/libsip.la
-%attr(755,root,root) %{_libdir}/libsip.so
-%attr(755,root,root) %{_libdir}/libsip.so.7
-%attr(755,root,root) %{_libdir}/libsip.so.7.0.0
+%doc *.gz
+%attr(755,root,root) %{_bindir}/*
+%{_includedir}/*/*.h
+%attr(755,root,root) %{py_sitedir}/lib*.*
