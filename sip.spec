@@ -1,13 +1,14 @@
 # TODO:
 # - %build shouldn't use $RPM_BUILD_ROOT
 # - libsip.so.* is built with evil RPATH (inside buildroot)
+
 %include        /usr/lib/rpm/macros.python
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.11
 %define		_snap       	20040218
-Release:	0.%{_snap}.2
+Release:	0.%{_snap}.3
 License:	GPL
 Group:		Development/Languages/Python
 # Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
@@ -19,6 +20,7 @@ BuildRequires:	python-devel >= 2.2
 BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python
+Requires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sipfilesdir	%{_datadir}/sip
@@ -48,6 +50,7 @@ echo 'yes' | python build.py \
 
 
 %{__make}
+sed -i "s:$RPM_BUILD_ROOT::g" sipconfig.py
 
 %install
 install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir},%{_sipfilesdir}}
