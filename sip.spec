@@ -19,6 +19,8 @@ BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define          _prefix         /usr/X11R6
+%define          _sipfilesdir         /usr/share/sip
+
 
 %description
 Generates Python bindings for C++ class libraries from a set of class
@@ -49,6 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir}}
 
 %{__make} install
+install -d $RPM_BUILD_ROOT%{_sipfilesdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -59,3 +62,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{py_sitedir}/lib*.*
 %{py_incdir}/*.h
+
+%dir %{_sipfilesdir}
