@@ -6,7 +6,7 @@ Version:	3.5
 Release:	1
 License:	GPL
 Group:		Development/Languages/Python
-Source0:	http://www.riverbankcomputing.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
+Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 Requires:	python >= 2.2
 BuildRequires:	qt-devel
