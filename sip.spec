@@ -1,6 +1,4 @@
 # TODO:
-# - libsip.so.* is built with evil RPATH (inside buildroot)
-# - Does %{py_sitedir}/libsip.so needs ldconfig ?
 # - Pass flags to configure 
 #    example: python configure.py "CXXFLAGS+=-fno-exceptions -fno-rtti" LFLAGS+=-s
 
@@ -54,9 +52,10 @@ python configure.py \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
 install -d $RPM_BUILD_ROOT%{_sipfilesdir}
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -65,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog NEWS README THANKS
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{py_sitedir}/lib*.*
+%attr(755,root,root) %{py_sitedir}/libsip.so
 %{py_sitedir}/sipconfig.py
 %{py_incdir}/*.h
 %dir %{_sipfilesdir}
