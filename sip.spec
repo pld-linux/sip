@@ -19,8 +19,8 @@ URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	rpm-pythonprov
+BuildRequires:	sed >= 4.0
 %pyrequires_eq	python
-Requires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sipfilesdir	%{_datadir}/sip
@@ -40,6 +40,7 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 %setup -q -n %{name}-snapshot-%{_snap}
 
 %build
+rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir},%{_bindir},%{py_libdir}}
 
 echo 'yes' | python build.py \
