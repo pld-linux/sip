@@ -7,7 +7,7 @@ Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.11
 %define		_snap       	20040218
-Release:	0.%{_snap}.1
+Release:	0.%{_snap}.2
 License:	GPL
 Group:		Development/Languages/Python
 # Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
@@ -46,10 +46,12 @@ echo 'yes' | python build.py \
 	-b $RPM_BUILD_ROOT%{_bindir} -d $RPM_BUILD_ROOT%{py_sitedir} \
 	-e $RPM_BUILD_ROOT%{py_incdir}
 
+
 %{__make}
 
 %install
 install -d $RPM_BUILD_ROOT{%{py_sitedir},%{py_incdir},%{_sipfilesdir}}
+install sipconfig.py $RPM_BUILD_ROOT%{py_sitedir}
 
 %{__make} install
 
@@ -61,5 +63,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog NEWS README THANKS
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{py_sitedir}/lib*.*
+%{py_sitedir}/sipconfig.py
 %{py_incdir}/*.h
 %dir %{_sipfilesdir}
