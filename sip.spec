@@ -1,6 +1,8 @@
 # TODO:
 # - libsip.so.* is built with evil RPATH (inside buildroot)
 # - Does %{py_sitedir}/libsip.so needs ldconfig ?
+# - Pass flags to configure 
+#    example: python configure.py "CXXFLAGS+=-fno-exceptions -fno-rtti" LFLAGS+=-s
 
 %include        /usr/lib/rpm/macros.python
 Summary:	Python bindings generator for C++ class libraries
@@ -8,7 +10,7 @@ Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.11
 %define		_snap       	20040218
-Release:	0.%{_snap}.4
+Release:	0.%{_snap}.5
 License:	GPL
 Group:		Development/Languages/Python
 # Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
@@ -19,6 +21,7 @@ URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	rpm-pythonprov
+BuildRequires:	tmake
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,6 +42,8 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 %setup -q -n %{name}-snapshot-%{_snap}
 
 %build
+QTDIR=%{_prefix} ; export QTDIR
+TMAKEPATH=/usr/share/tmake; export TMAKEPATH
 
 python configure.py \
 	-b %{_bindir} -d %{py_sitedir} \
