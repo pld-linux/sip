@@ -1,14 +1,10 @@
-# TODO:
-# - Pass flags to configure 
-#    example: python configure.py "CXXFLAGS+=-fno-exceptions -fno-rtti" LFLAGS+=-s
-
 %include        /usr/lib/rpm/macros.python
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	3.11
 %define		_snap       	20040218
-Release:	0.%{_snap}.5
+Release:	0.%{_snap}.6
 License:	GPL
 Group:		Development/Languages/Python
 # Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-x11-gpl-%{version}.tar.gz
@@ -40,15 +36,27 @@ uruchomienia wszystkich wygenerowanych powi±zañ.
 %setup -q -n %{name}-snapshot-%{_snap}
 
 %build
-QTDIR=%{_prefix} ; export QTDIR
-TMAKEPATH=/usr/share/tmake; export TMAKEPATH
-
+# configure.py notes:
+# - macros overrides must be last
+# - cannot pass CXXFLAGS+="%{rpmcflags}" or so - builtin -O2 overrides rpmcflags
+QTDIR=%{_prefix} \
+TMAKEPATH=/usr/share/tmake \
 python configure.py \
-	-b %{_bindir} -d %{py_sitedir} \
+	-b %{_bindir} \
+	-d %{py_sitedir} \
 	-e %{py_incdir} \
 	-l qt-mt \
+	LIBDIR_QT="%{_libdir}"
 
-%{__make} 
+%{__make} -C sipgen \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -pipe -w" \
+	LINK="%{__cc}"
+
+%{__make} -C siplib \
+	CXX="%{__cxx}" \
+	CXXFLAGS="%{rpmcflags} -fPIC -pipe -w" \
+	LINK="%{__cxx}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
