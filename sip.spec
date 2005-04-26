@@ -13,6 +13,7 @@ URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	tmake
+Requires:	python-devel >= 2.2
 %pyrequires_eq	python-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
