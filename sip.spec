@@ -25,20 +25,6 @@ specification files.
 Generuje powi±zania Pythona z bibliotekami klas C++ ze zbioru plików
 ze specyfikacjami klas.
 
-%package devel
-Summary:	sip - development files needed to build bindings
-Summary(pl):	sip - pliki programistyczne potrzebne do budowania powi±zañ
-Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	python-devel >= 2.3
-%pyrequires_eq	python-libs
-
-%description devel
-Development files needed to build bindings for C++ classes.
-
-%description devel -l pl
-Pliki programistyczne potrzebne do budowania powi±zañ z klasami C++.
-
 %package -n python-sip
 Summary:	Python module needed by generated bindings
 Summary(pl):	Modu³ Pythona wymagany przez wygenerowane powi±zania
@@ -54,6 +40,20 @@ all generated bindings.
 Generuje powi±zania Pythona z bibliotekami klas C++ ze zbioru plików
 ze specyfikacjami klas. Ten pakiet zawiera bibliotekê potrzebn± do
 uruchomienia wszystkich wygenerowanych powi±zañ.
+
+%package -n python-sip-devel
+Summary:	Development files needed to build bindings
+Summary(pl):	Pliki programistyczne potrzebne do budowania powi±zañ
+Group:		Development/Libraries
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	python-devel >= 2.3
+%pyrequires_eq	python-libs
+
+%description -n python-sip-devel
+Development files needed to build bindings for C++ classes.
+
+%description -n python-sip-devel -l pl
+Pliki programistyczne potrzebne do budowania powi±zañ z klasami C++.
 
 %prep
 %setup -q
@@ -96,12 +96,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog LICENSE NEWS THANKS doc/*
 %attr(755,root,root) %{_bindir}/*
 
-%files devel
+%files -n python-sip
+%defattr(644,root,root,755)
+%attr(755,root,root) %{py_sitedir}/sip.so
+
+%files -n python-sip-devel
 %defattr(644,root,root,755)
 %{py_sitedir}/sip*.py
 %{py_incdir}/*.h
 %dir %{_sipfilesdir}
-
-%files -n python-sip
-%defattr(644,root,root,755)
-%attr(755,root,root) %{py_sitedir}/sip.so
