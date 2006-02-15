@@ -1,0 +1,3 @@
+- proper package required by %pyrequires_eq
+- cosmetics
+- rel 2 to rebuild with Python 2.4
