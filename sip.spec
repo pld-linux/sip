@@ -71,7 +71,7 @@ python configure.py \
 	-l qt-mt \
 	-v %{_sipfilesdir} \
 	LIBDIR_QT="%{_libdir}" \
-	LIBDIR_X11="%{_prefix}/X11R6/%{_lib}" \
+	LIBDIR_X11="/usr/X11R6/%{_lib}" \
 	CC="%{__cc}" \
 	CXX="%{__cxx}" \
 	CFLAGS="%{rpmcflags}" \
