@@ -13,31 +13,57 @@ BuildRequires:	python-devel >= 2.3
 BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tmake
-Requires:	python-devel >= 2.3
-%pyrequires_eq	python-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sipfilesdir	%{_datadir}/sip
 
 %description
 Generates Python bindings for C++ class libraries from a set of class
-specification files. Also includes a runtime support library needed by
-all generated bindings.
+specification files.
 
 %description -l pl
 Generuje powi±zania Pythona z bibliotekami klas C++ ze zbioru plików
-ze specyfikacjami klas. Zawiera te¿ bibliotekê potrzebn± do
+ze specyfikacjami klas.
+
+%package devel
+Summary:	sip - development files needed to build bindings
+Summary(pl):	sip - pliki programistyczne potrzebne do budowania powi±zañ
+Group:		Development/Libraries
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	python-devel >= 2.3
+%pyrequires_eq	python-libs
+
+%description devel
+Development files needed to build bindings for C++ classes.
+
+%description devel -l pl
+Pliki programistyczne potrzebne do budowania powi±zañ z klasami C++.
+
+%package -n python-sip
+Summary:	Python module needed by generated bindings
+Summary(pl):	Modu³ Pythona wymagany przez wygenerowane powi±zania
+Group:		Libraries/Python
+%pyrequires_eq	python-libs
+
+%description -n python-sip
+Generates Python bindings for C++ class libraries from a set of class
+specification files. This package includes runtime library needed by
+all generated bindings.
+
+%description -n python-sip -l pl
+Generuje powi±zania Pythona z bibliotekami klas C++ ze zbioru plików
+ze specyfikacjami klas. Ten pakiet zawiera bibliotekê potrzebn± do
 uruchomienia wszystkich wygenerowanych powi±zañ.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 # configure.py notes:
 # - macros overrides must be last
 # - cannot pass CXXFLAGS+="%{rpmcflags}" or so - builtin -O2 overrides rpmcflags
 QTDIR=%{_prefix} \
-TMAKEPATH=/usr/share/tmake \
+TMAKEPATH=%{_datadir}/tmake \
 python configure.py \
 	-b %{_bindir} \
 	-d %{py_sitedir} \
@@ -45,7 +71,7 @@ python configure.py \
 	-l qt-mt \
 	-v %{_sipfilesdir} \
 	LIBDIR_QT="%{_libdir}" \
-	LIBDIR_X11="/usr/X11R6/%{_lib}" \
+	LIBDIR_X11="%{_prefix}/X11R6/%{_lib}" \
 	CC="%{__cc}" \
 	CXX="%{__cxx}" \
 	CFLAGS="%{rpmcflags}" \
@@ -69,7 +95,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog LICENSE NEWS THANKS doc/*
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{py_sitedir}/sip.so
+
+%files devel
+%defattr(644,root,root,755)
 %{py_sitedir}/sip*.py
 %{py_incdir}/*.h
 %dir %{_sipfilesdir}
+
+%files -n python-sip
+%defattr(644,root,root,755)
+%attr(755,root,root) %{py_sitedir}/sip.so
