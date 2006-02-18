@@ -1,0 +1,20 @@
+--- sip-snapshot-20060128/siputils.py.orig	2006-02-11 04:30:38.000000000 +0100
++++ sip-snapshot-20060128/siputils.py	2006-02-14 01:02:28.000000000 +0100
+@@ -497,8 +497,15 @@
+                     for mod in qtmods:
+                         incdir.append(os.path.join(qtincdir[0], mod))
+ 
+-            specd = os.path.join(self.config.qt_dir, "mkspecs", "default")
+-
++            for sqmake in os.popen('qmake -query QMAKE_MKSPECS').read()[:-1].split(':'):
++                specd = os.path.join(sqmake, 'default')
++                if os.access(specd, os.F_OK):
++                    break
++                else:
++                    specd = os.path.join(sqmake, self.config.platform)
++                    if os.access(specd, os.F_OK):
++                        break
++                                    
+             if not os.access(specd, os.F_OK):
+                 specd = os.path.join(self.config.qt_dir, "mkspecs", self.config.platform)
+ 
