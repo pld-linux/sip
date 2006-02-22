@@ -1,4 +1,4 @@
-%define		_snap	20060216
+%define		_snap	20060221
 
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
@@ -9,8 +9,7 @@ Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
 Source0:	http://www.riverbankcomputing.com/Downloads/Snapshots/sip4/%{name}-snapshot-%{_snap}.tar.gz
-# Source0-md5:	578b4a759f19a4f693258cec4940ec33
-Patch0:		%{name}-mkspec.patch
+# Source0-md5:	c0dcfd5503133f6b68bface5fc9b1ee9
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	libstdc++-devel
 BuildRequires:	python-devel >= 2.3
@@ -49,7 +48,6 @@ Summary:	Development files needed to build bindings
 Summary(pl):	Pliki programistyczne potrzebne do budowania powi±zañ
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	/usr/bin/qmake
 Requires:	python-devel >= 2.3
 %pyrequires_eq	python-libs
 
@@ -61,7 +59,6 @@ Pliki programistyczne potrzebne do budowania powi±zañ z klasami C++.
 
 %prep
 %setup -q -n %{name}-snapshot-%{_snap}
-%patch0 -p1
 
 %build
 # configure.py notes:
