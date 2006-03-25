@@ -1,15 +1,17 @@
-%define		_snap	20060221
+#%%define		_snap	20060221
 
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.4
-Release:	0.%{_snap}.1
+# Release:	0.%{_snap}.1
+Release:	1
 Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
-Source0:	http://www.riverbankcomputing.com/Downloads/Snapshots/sip4/%{name}-snapshot-%{_snap}.tar.gz
-# Source0-md5:	c0dcfd5503133f6b68bface5fc9b1ee9
+# Source0:	http://www.riverbankcomputing.com/Downloads/Snapshots/sip4/%{name}-snapshot-%{_snap}.tar.gz
+Source0:	http://www.riverbankcomputing.com/Downloads/sip4/sip-%{version}.tar.gz
+# Source0-md5:	d628b69e107fb9b5f3a129a495d2a388
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
 BuildRequires:	libstdc++-devel
 BuildRequires:	python-devel >= 2.3
@@ -58,7 +60,8 @@ Development files needed to build bindings for C++ classes.
 Pliki programistyczne potrzebne do budowania powi±zañ z klasami C++.
 
 %prep
-%setup -q -n %{name}-snapshot-%{_snap}
+# %%setup -q -n %{name}-snapshot-%{_snap}
+%setup -q  
 
 %build
 # configure.py notes:
