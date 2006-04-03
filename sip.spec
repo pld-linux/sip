@@ -1,18 +1,18 @@
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
-Version:	4.3.2
-Release:	2
+Version:	4.4.1
+Release:	1
 Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
-Source0:	http://www.river-bank.demon.co.uk/download/sip/%{name}-%{version}.tar.gz
-# Source0-md5:	993c890998e337d4df71c5d4b0db52b9
+Source0:	http://www.riverbankcomputing.com/Downloads/sip4/sip-%{version}.tar.gz
+# Source0-md5:	81e62ad2a715151992bc8309863056b5
 URL:		http://www.riverbankcomputing.co.uk/sip/index.php
+BuildRequires:	libstdc++-devel
 BuildRequires:	python-devel >= 2.3
-BuildRequires:	qt-devel >= 3.1.2
 BuildRequires:	rpm-pythonprov
-BuildRequires:	tmake
+BuildRequires:	rpmbuild(macros) >= 1.167
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sipfilesdir	%{_datadir}/sip
@@ -62,16 +62,10 @@ Pliki programistyczne potrzebne do budowania powi±zañ z klasami C++.
 # configure.py notes:
 # - macros overrides must be last
 # - cannot pass CXXFLAGS+="%{rpmcflags}" or so - builtin -O2 overrides rpmcflags
-QTDIR=%{_prefix} \
-TMAKEPATH=%{_datadir}/tmake \
 python configure.py \
 	-b %{_bindir} \
-	-d %{py_sitedir} \
 	-e %{py_incdir} \
-	-l qt-mt \
 	-v %{_sipfilesdir} \
-	LIBDIR_QT="%{_libdir}" \
-	LIBDIR_X11="/usr/X11R6/%{_lib}" \
 	CC="%{__cc}" \
 	CXX="%{__cxx}" \
 	CFLAGS="%{rpmcflags}" \
