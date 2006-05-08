@@ -66,7 +66,7 @@ python configure.py \
 	-b %{_bindir} \
 	-e %{py_incdir} \
 	-v %{_sipfilesdir} \
-        -d %{py_sitedir} \
+	-d %{py_sitedir} \
 	CC="%{__cc}" \
 	CXX="%{__cxx}" \
 	CFLAGS="%{rpmcflags}" \
