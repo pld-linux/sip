@@ -1,10 +1,10 @@
 # TODO: Check if really v 4.5 is python 2.5 compatible, if so,
-#    make non-fractional release and kill python2.5.patch
+#    kill python2.5.patch
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.5
-Release:	0.1
+Release:	1
 Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
