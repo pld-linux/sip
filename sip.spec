@@ -1,7 +1,7 @@
 # TODO: Check if really v 4.5 is python 2.5 compatible, if so,
 #    kill python2.5.patch
 Summary:	Python bindings generator for C++ class libraries
-Summary(pl):	Generator powi±zañ Pythona z bibliotekami klas C++
+Summary(pl.UTF-8):   Generator powiÄ…zaÅ„ Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.5.2
 Release:	1
@@ -24,13 +24,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Generates Python bindings for C++ class libraries from a set of class
 specification files.
 
-%description -l pl
-Generuje powi±zania Pythona z bibliotekami klas C++ ze zbioru plików
+%description -l pl.UTF-8
+Generuje powiÄ…zania Pythona z bibliotekami klas C++ ze zbioru plikÃ³w
 ze specyfikacjami klas.
 
 %package -n python-sip
 Summary:	Python module needed by generated bindings
-Summary(pl):	Modu³ Pythona wymagany przez wygenerowane powi±zania
+Summary(pl.UTF-8):   ModuÅ‚ Pythona wymagany przez wygenerowane powiÄ…zania
 Group:		Libraries/Python
 %pyrequires_eq	python-libs
 
@@ -39,14 +39,14 @@ Generates Python bindings for C++ class libraries from a set of class
 specification files. This package includes runtime library needed by
 all generated bindings.
 
-%description -n python-sip -l pl
-Generuje powi±zania Pythona z bibliotekami klas C++ ze zbioru plików
-ze specyfikacjami klas. Ten pakiet zawiera bibliotekê potrzebn± do
-uruchomienia wszystkich wygenerowanych powi±zañ.
+%description -n python-sip -l pl.UTF-8
+Generuje powiÄ…zania Pythona z bibliotekami klas C++ ze zbioru plikÃ³w
+ze specyfikacjami klas. Ten pakiet zawiera bibliotekÄ™ potrzebnÄ… do
+uruchomienia wszystkich wygenerowanych powiÄ…zaÅ„.
 
 %package -n python-sip-devel
 Summary:	Development files needed to build bindings
-Summary(pl):	Pliki programistyczne potrzebne do budowania powi±zañ
+Summary(pl.UTF-8):   Pliki programistyczne potrzebne do budowania powiÄ…zaÅ„
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	python-devel >= 2.3
@@ -55,8 +55,8 @@ Requires:	python-devel >= 2.3
 %description -n python-sip-devel
 Development files needed to build bindings for C++ classes.
 
-%description -n python-sip-devel -l pl
-Pliki programistyczne potrzebne do budowania powi±zañ z klasami C++.
+%description -n python-sip-devel -l pl.UTF-8
+Pliki programistyczne potrzebne do budowania powiÄ…zaÅ„ z klasami C++.
 
 %prep
 %setup -q
