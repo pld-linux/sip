@@ -1,7 +1,7 @@
 # TODO: Check if really v 4.5 is python 2.5 compatible, if so,
 #    kill python2.5.patch
 Summary:	Python bindings generator for C++ class libraries
-Summary(pl.UTF-8):   Generator powiązań Pythona z bibliotekami klas C++
+Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.5.2
 Release:	1
@@ -30,7 +30,7 @@ ze specyfikacjami klas.
 
 %package -n python-sip
 Summary:	Python module needed by generated bindings
-Summary(pl.UTF-8):   Moduł Pythona wymagany przez wygenerowane powiązania
+Summary(pl.UTF-8):	Moduł Pythona wymagany przez wygenerowane powiązania
 Group:		Libraries/Python
 %pyrequires_eq	python-libs
 
@@ -46,7 +46,7 @@ uruchomienia wszystkich wygenerowanych powiązań.
 
 %package -n python-sip-devel
 Summary:	Development files needed to build bindings
-Summary(pl.UTF-8):   Pliki programistyczne potrzebne do budowania powiązań
+Summary(pl.UTF-8):	Pliki programistyczne potrzebne do budowania powiązań
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	python-devel >= 2.3
