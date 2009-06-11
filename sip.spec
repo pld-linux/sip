@@ -1,18 +1,16 @@
 # TODO: Check if really v 4.5 is python 2.5 compatible, if so,
 #    kill python2.5.patch
-%define snap 20090529
 
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.8
-Release:	0.%{snap}.1
+Release:	1
 Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
-#Source0:	http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}.tar.gz
-Source0:	http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}-snapshot-%{snap}.tar.gz
-# Source0-md5:	6fde0c52e1a19f1a812aac373df40715
+Source0:	http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}.tar.gz
+# Source0-md5:	8a28270f2907a8a84a4972457efde476
 URL:		http://www.riverbankcomputing.com/software/sip/
 # Patch0:		%{name}-python2.5.patch
 BuildRequires:	libstdc++-devel
@@ -62,7 +60,7 @@ Development files needed to build bindings for C++ classes.
 Pliki programistyczne potrzebne do budowania powiązań z klasami C++.
 
 %prep
-%setup -q -n sip-%{version}-snapshot-%{snap}
+%setup -q
 #%%patch0 -p1
 
 %build
@@ -95,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog LICENSE NEWS README TODO doc/*
+%doc ChangeLog LICENSE NEWS README doc/*
 %attr(755,root,root) %{_bindir}/*
 
 %files -n python-sip
