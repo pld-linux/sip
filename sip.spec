@@ -5,7 +5,7 @@ Summary:	Python bindings generator for C++ class libraries
 Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.8.2
-Release:	1
+Release:	2
 Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
@@ -99,9 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python-sip
 %defattr(644,root,root,755)
 %attr(755,root,root) %{py_sitedir}/sip.so
+%dir %{_sipfilesdir}
 
 %files -n python-sip-devel
 %defattr(644,root,root,755)
 %{py_sitedir}/sip*.py
 %{py_incdir}/*.h
-%dir %{_sipfilesdir}
