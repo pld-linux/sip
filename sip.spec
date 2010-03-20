@@ -10,7 +10,7 @@ Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
 Source0:	http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}.tar.gz
-# Source0-md5:	4b8f7361839b33868dd3cc576509ba8e
+# Source0-md5:	9fa0b0d17ad355bde004317f67c819f9
 URL:		http://www.riverbankcomputing.com/software/sip/
 # Patch0:		%{name}-python2.5.patch
 BuildRequires:	libstdc++-devel
