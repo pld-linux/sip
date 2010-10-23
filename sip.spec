@@ -1,18 +1,14 @@
-# TODO: Check if really v 4.5 is python 2.5 compatible, if so,
-#    kill python2.5.patch
-
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
-Version:	4.11.1
+Version:	4.11.2
 Release:	1
 Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
 Source0:	http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}.tar.gz
-# Source0-md5:	d32ae4dfea42ebf37419a0ec28b597de
+# Source0-md5:	d799804ca0a88bd76c6c2cdf8935c3cb
 URL:		http://www.riverbankcomputing.com/software/sip/
-# Patch0:		%{name}-python2.5.patch
 BuildRequires:	libstdc++-devel
 BuildRequires:	python-devel >= 2.3
 BuildRequires:	rpm-pythonprov
@@ -61,7 +57,6 @@ Pliki programistyczne potrzebne do budowania powiązań z klasami C++.
 
 %prep
 %setup -q
-#%%patch0 -p1
 
 %build
 # configure.py notes:
