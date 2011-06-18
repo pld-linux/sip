@@ -83,13 +83,16 @@ install -d $RPM_BUILD_ROOT%{_sipfilesdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%py_comp $RPM_BUILD_ROOT%{_py_sitedir}
+%py_ocomp $RPM_BUILD_ROOT%{_py_sitedir}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE NEWS README doc/*
-%attr(755,root,root) %{_bindir}/*
+%doc LICENSE NEWS README doc/html
+%attr(755,root,root) %{_bindir}/sip
 
 %files -n python-sip
 %defattr(644,root,root,755)
@@ -98,5 +101,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n python-sip-devel
 %defattr(644,root,root,755)
-%{py_sitedir}/sip*.py
-%{py_incdir}/*.h
+%{py_sitedir}/sipconfig.py*
+%{py_sitedir}/sipdistutils.py*
+%{py_incdir}/sip.h
