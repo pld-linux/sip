@@ -1,13 +1,13 @@
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
-Version:	4.12.4
+Version:	4.13
 Release:	1
 Epoch:		2
 License:	redistributable (see LICENSE)
 Group:		Development/Languages/Python
 Source0:	http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}.tar.gz
-# Source0-md5:	6cbd56abb7d35aad833789c98ae61652
+# Source0-md5:	21b4e2cad56e4156df2220143264b8ff
 URL:		http://www.riverbankcomputing.com/software/sip/
 BuildRequires:	libstdc++-devel
 BuildRequires:	python-devel >= 2.3
@@ -83,8 +83,8 @@ install -d $RPM_BUILD_ROOT%{_sipfilesdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%py_comp $RPM_BUILD_ROOT%{_py_sitedir}
-%py_ocomp $RPM_BUILD_ROOT%{_py_sitedir}
+%py_comp $RPM_BUILD_ROOT%{py_sitedir}
+%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -101,6 +101,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n python-sip-devel
 %defattr(644,root,root,755)
-%{py_sitedir}/sipconfig.py*
-%{py_sitedir}/sipdistutils.py*
+%{py_sitedir}/sipconfig.py
+%{py_sitedir}/sipconfig.py[co]
+%{py_sitedir}/sipdistutils.py
+%{py_sitedir}/sipdistutils.py[co]
 %{py_incdir}/sip.h
