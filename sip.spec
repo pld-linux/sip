@@ -62,7 +62,7 @@ Pliki programistyczne potrzebne do budowania powiązań z klasami C++.
 # configure.py notes:
 # - macros overrides must be last
 # - cannot pass CXXFLAGS+="%{rpmcflags}" or so - builtin -O2 overrides rpmcflags
-python configure.py \
+%{__python} configure.py \
 	-b %{_bindir} \
 	-e %{py_incdir} \
 	-v %{_sipfilesdir} \
