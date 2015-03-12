@@ -8,20 +8,6 @@
  sip_module_base = None
  build_platform = None
  
-@@ -455,10 +456,11 @@
- 
-         sipconfig.ModuleMakefile(
-             configuration=cfg,
--            build_file=os.path.join(src_dir, "siplib", "siplib.sbf"),
-+            build_file=os.path.join(build_dir, "siplib", "siplib.sbf"),
-             dir="siplib",
-+            src_dir=os.path.join(src_dir, "siplib"),
-             install_dir=cfg.sip_mod_dir,
--            installs=([os.path.join(src_dir, "siplib", "sip.h")], cfg.sip_inc_dir),
-+            installs=([os.path.join(build_dir, "siplib", "sip.h")], cfg.sip_inc_dir),
-             console=1,
-             warnings=0,
-             static=opts.static,
 --- sip-4.16.3/siputils.py.orig	2014-09-07 17:30:09.000000000 +0200
 +++ sip-4.16.3/siputils.py	2014-10-27 22:19:01.287642057 +0100
 @@ -202,7 +202,7 @@
@@ -84,12 +70,4 @@
  
          self._build = self.parse_build_file(build_file)
          self._install_dir = install_dir
-@@ -1677,7 +1683,7 @@
-             cpp = "moc_" + root + ".cpp"
- 
-             mfile.write("\n%s: %s\n" % (cpp, mf))
--            mfile.write("\t$(MOC) -o %s %s\n" % (cpp, mf))
-+            mfile.write("\t$(MOC) -o %s $<\n" % cpp)
- 
-         mfile.write("\n$(TARGET): $(OFILES)\n")
  
