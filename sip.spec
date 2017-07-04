@@ -1,4 +1,3 @@
-# TODO: __pycache__ for python3-sip-devel
 #
 # Conditional build:
 %bcond_without	python2	# CPython 2.x modules
@@ -159,6 +158,9 @@ install -d $RPM_BUILD_ROOT%{_sipfilesdir}
 %if %{with python3}
 %{__make} -C build-py3 install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
+%py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
 %endif
 
 %clean
@@ -194,6 +196,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{py3_sitedir}/sipconfig.py
 %{py3_sitedir}/sipdistutils.py
+%{py3_sitedir}/__pycache__/sipconfig.cpython-*.py[co]
+%{py3_sitedir}/__pycache__/sipdistutils.cpython-*.py[co]
 %{py3_sitedir}/sip.pyi
 %{py3_incdir}/sip.h
 %endif
