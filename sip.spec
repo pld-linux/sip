@@ -7,7 +7,7 @@ Summary:	Python bindings generator for C++ class libraries
 Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.19.12
-Release:	1
+Release:	2
 Epoch:		2
 License:	SIP (redistributable, see LICENSE) or GPL v2 or GPL v3
 Group:		Development/Languages/Python
@@ -107,6 +107,7 @@ C++ przy użyciu SIP-a.
 install -d build-py2
 cd build-py2
 %{__python} ../configure.py \
+	--sip-module=PyQt5.sip \
 	-b %{_bindir} \
 	-e %{py_incdir} \
 	-v %{_sipfilesdir} \
@@ -126,6 +127,7 @@ cd ..
 install -d build-py3
 cd build-py3
 %{__python3} ../configure.py \
+	--sip-module=PyQt5.sip \
 	-b %{_bindir} \
 	-e %{py3_incdir} \
 	-v %{_sipfilesdir} \
@@ -173,7 +175,8 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files -n python-sip
 %defattr(644,root,root,755)
-%attr(755,root,root) %{py_sitedir}/sip.so
+%dir %{py_sitedir}/PyQt5
+%attr(755,root,root) %{py_sitedir}/PyQt5/sip.so
 
 %files -n python-sip-devel
 %defattr(644,root,root,755)
@@ -181,14 +184,15 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/sipconfig.py[co]
 %{py_sitedir}/sipdistutils.py
 %{py_sitedir}/sipdistutils.py[co]
-%{py_sitedir}/sip.pyi
+%{py_sitedir}/PyQt5/sip.pyi
 %{py_incdir}/sip.h
 %endif
 
 %if %{with python3}
 %files -n python3-sip
 %defattr(644,root,root,755)
-%attr(755,root,root) %{py3_sitedir}/sip.so
+%dir %{py3_sitedir}/PyQt5
+%attr(755,root,root) %{py3_sitedir}/PyQt5/sip.so
 
 %files -n python3-sip-devel
 %defattr(644,root,root,755)
@@ -196,6 +200,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/sipdistutils.py
 %{py3_sitedir}/__pycache__/sipconfig.cpython-*.py[co]
 %{py3_sitedir}/__pycache__/sipdistutils.cpython-*.py[co]
-%{py3_sitedir}/sip.pyi
+%{py3_sitedir}/PyQt5/sip.pyi
 %{py3_incdir}/sip.h
 %endif
