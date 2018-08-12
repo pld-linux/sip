@@ -176,8 +176,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python-sip
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/PyQt5
-%{py_sitedir}/PyQt5/__init__.py
-%{py_sitedir}/PyQt5/__init__.py[co]
 %attr(755,root,root) %{py_sitedir}/PyQt5/sip.so
 
 %files -n python-sip-devel
