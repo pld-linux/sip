@@ -7,7 +7,7 @@ Summary:	Python bindings generator for C++ class libraries
 Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.19.12
-Release:	5
+Release:	6
 Epoch:		2
 License:	SIP (redistributable, see LICENSE) or GPL v2 or GPL v3
 Group:		Development/Languages/Python
@@ -73,6 +73,7 @@ Summary(pl.UTF-8):	Pliki programistyczne Pythona 2 potrzebne do budowania wiąza
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	python-sip = %{epoch}:%{version}-%{release}
+Requires:	python-PyQt5-sip = %{epoch}:%{version}-%{release}
 Requires:	python-devel >= 1:2.3
 
 %description -n python-sip-devel
@@ -125,6 +126,7 @@ Summary(pl.UTF-8):	Pliki programistyczne Pythona 3 potrzebne do budowania wiąza
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	python3-sip = %{epoch}:%{version}-%{release}
+Requires:	python3-PyQt5-sip = %{epoch}:%{version}-%{release}
 Requires:	python3-devel >= 1:3.2
 
 %description -n python3-sip-devel
@@ -268,6 +270,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/sipconfig.py[co]
 %{py_sitedir}/sipdistutils.py
 %{py_sitedir}/sipdistutils.py[co]
+%{py_sitedir}/sip.pyi
 %{py_sitedir}/PyQt5/sip.pyi
 %{py_incdir}/sip.h
 %endif
@@ -288,6 +291,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/sipdistutils.py
 %{py3_sitedir}/__pycache__/sipconfig.cpython-*.py[co]
 %{py3_sitedir}/__pycache__/sipdistutils.cpython-*.py[co]
+%{py3_sitedir}/sip.pyi
 %{py3_sitedir}/PyQt5/sip.pyi
 %{py3_incdir}/sip.h
 %endif
