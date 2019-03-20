@@ -6,13 +6,13 @@
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
-Version:	4.19.14
-Release:	2
+Version:	4.19.15
+Release:	1
 Epoch:		2
 License:	SIP (redistributable, see LICENSE) or GPL v2 or GPL v3
 Group:		Development/Languages/Python
 Source0:	https://www.riverbankcomputing.com/static/Downloads/sip/%{name}-%{version}.tar.gz
-# Source0-md5:	bba62b2ea7e16193c7dfcfadb8dd0d05
+# Source0-md5:	236578d2199da630ae1251671b9a7bfe
 URL:		http://www.riverbankcomputing.com/software/sip/
 BuildRequires:	libstdc++-devel
 BuildRequires:	python-devel >= 1:2.3
