@@ -47,33 +47,11 @@ SIP generuje powiązania Pythona z bibliotekami klas C++ ze zbioru
 plików ze specyfikacjami klas. Ten pakiet zawiera bibliotekę Pythona 2
 potrzebną do uruchomienia wszystkich wygenerowanych powiązań.
 
-%package -n python-PyQt5-sip
-Summary:	Python 2 module needed by SIP generated bindings
-Summary(pl.UTF-8):	Moduł Pythona 2 wymagany przez wiązania wygenerowane przez SIP
-Group:		Libraries/Python
-Requires:	python-libs
-
-%description -n python-PyQt5-sip
-SIP generates Python bindings for C++ class libraries from a set of
-class specification files. This package includes Python 2 runtime
-library needed by all generated bindings.
-
-PyQt5 private copy.
-
-%description -n python-PyQt5-sip -l pl.UTF-8
-SIP generuje powiązania Pythona z bibliotekami klas C++ ze zbioru
-plików ze specyfikacjami klas. Ten pakiet zawiera bibliotekę Pythona 2
-potrzebną do uruchomienia wszystkich wygenerowanych powiązań.
-
-Prywatna kopia PyQt5.
-
 %package -n python-sip-devel
 Summary:	Python 2 development files needed to build bindings using SIP
 Summary(pl.UTF-8):	Pliki programistyczne Pythona 2 potrzebne do budowania wiązań przy użyciu SIP-a
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	python-sip = %{epoch}:%{version}-%{release}
-Requires:	python-PyQt5-sip = %{epoch}:%{version}-%{release}
 Requires:	python-devel >= 1:2.3
 
 %description -n python-sip-devel
@@ -83,6 +61,37 @@ using SIP.
 %description -n python-sip-devel -l pl.UTF-8
 Pliki programistyczne Pythona 2 potrzebne do budowania wiązań dla klas
 C++ przy użyciu SIP-a.
+
+%package -n python-PyQt5-sip
+Summary:	Python 2 module needed by SIP generated bindings for PyQt5
+Summary(pl.UTF-8):	Moduł Pythona 2 wymagany przez wiązania wygenerowane przez SIP dla PyQt5
+Group:		Libraries/Python
+Requires:	python-libs
+
+%description -n python-PyQt5-sip
+SIP generates Python bindings for C++ class libraries from a set of
+class specification files. This package includes Python 2 runtime
+library needed by all generated bindings for PyQt5.
+
+%description -n python-PyQt5-sip -l pl.UTF-8
+SIP generuje powiązania Pythona z bibliotekami klas C++ ze zbioru
+plików ze specyfikacjami klas. Ten pakiet zawiera bibliotekę Pythona 2
+potrzebną do uruchomienia wszystkich wygenerowanych wiązań dla PyQt5.
+
+%package -n python-PyQt5-sip-devel
+Summary:	Python 2 development files needed to build bindings for PyQt5 using SIP
+Summary(pl.UTF-8):	Pliki programistyczne Pythona 2 potrzebne do budowania wiązań dla PyQt5 przy użyciu SIP-a
+Group:		Development/Libraries
+Requires:	python-PyQt5-sip = %{epoch}:%{version}-%{release}
+Requires:	python-sip-devel = %{epoch}:%{version}-%{release}
+
+%description -n python-PyQt5-sip-devel
+Python 2 development files needed to build bindings for C++ classes
+for PyQt5 using SIP.
+
+%description -n python-PyQt5-sip-devel -l pl.UTF-8
+Pliki programistyczne Pythona 2 potrzebne do budowania wiązań dla klas
+C++ dla PyQt5 przy użyciu SIP-a.
 
 %package -n python3-sip
 Summary:	Python 3 module needed by SIP generated bindings
@@ -100,33 +109,12 @@ SIP generuje powiązania Pythona z bibliotekami klas C++ ze zbioru
 plików ze specyfikacjami klas. Ten pakiet zawiera bibliotekę Pythona 3
 potrzebną do uruchomienia wszystkich wygenerowanych powiązań.
 
-%package -n python3-PyQt5-sip
-Summary:	Python 3 module needed by SIP generated bindings
-Summary(pl.UTF-8):	Moduł Pythona 3 wymagany przez wiązania wygenerowane przez SIP
-Group:		Libraries/Python
-Requires:	python3-libs
-
-%description -n python3-PyQt5-sip
-SIP generates Python bindings for C++ class libraries from a set of
-class specification files. This package includes Python 3 runtime
-library needed by all generated bindings.
-
-PyQt5 private copy.
-
-%description -n python3-PyQt5-sip -l pl.UTF-8
-SIP generuje powiązania Pythona z bibliotekami klas C++ ze zbioru
-plików ze specyfikacjami klas. Ten pakiet zawiera bibliotekę Pythona 3
-potrzebną do uruchomienia wszystkich wygenerowanych powiązań.
-
-Prywatna kopia PyQt5.
-
 %package -n python3-sip-devel
 Summary:	Python 3 development files needed to build bindings using SIP
 Summary(pl.UTF-8):	Pliki programistyczne Pythona 3 potrzebne do budowania wiązań przy użyciu SIP-a
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	python3-sip = %{epoch}:%{version}-%{release}
-Requires:	python3-PyQt5-sip = %{epoch}:%{version}-%{release}
 Requires:	python3-devel >= 1:3.2
 
 %description -n python3-sip-devel
@@ -136,6 +124,37 @@ using SIP.
 %description -n python3-sip-devel -l pl.UTF-8
 Pliki programistyczne Pythona 3 potrzebne do budowania wiązań dla klas
 C++ przy użyciu SIP-a.
+
+%package -n python3-PyQt5-sip
+Summary:	Python 3 module needed by SIP generated bindings for PyQt5
+Summary(pl.UTF-8):	Moduł Pythona 3 wymagany przez wiązania wygenerowane przez SIP dla PyQt5
+Group:		Libraries/Python
+Requires:	python3-libs
+
+%description -n python3-PyQt5-sip
+SIP generates Python bindings for C++ class libraries from a set of
+class specification files. This package includes Python 2 runtime
+library needed by all generated bindings for PyQt5.
+
+%description -n python3-PyQt5-sip -l pl.UTF-8
+SIP generuje powiązania Pythona z bibliotekami klas C++ ze zbioru
+plików ze specyfikacjami klas. Ten pakiet zawiera bibliotekę Pythona 2
+potrzebną do uruchomienia wszystkich wygenerowanych wiązań dla PyQt5.
+
+%package -n python3-PyQt5-sip-devel
+Summary:	Python 3 development files needed to build bindings for PyQt5 using SIP
+Summary(pl.UTF-8):	Pliki programistyczne Pythona 3 potrzebne do budowania wiązań dla PyQt5 przy użyciu SIP-a
+Group:		Development/Libraries
+Requires:	python3-PyQt5-sip = %{epoch}:%{version}-%{release}
+Requires:	python3-sip-devel = %{epoch}:%{version}-%{release}
+
+%description -n python3-PyQt5-sip-devel
+Python 3 development files needed to build bindings for C++ classes
+for PyQt5 using SIP.
+
+%description -n python3-PyQt5-sip-devel -l pl.UTF-8
+Pliki programistyczne Pythona 3 potrzebne do budowania wiązań dla klas
+C++ dla PyQt5 przy użyciu SIP-a.
 
 %prep
 %setup -q
@@ -232,6 +251,7 @@ install -d $RPM_BUILD_ROOT%{_sipfilesdir}
 
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/{sip,PyQt5_sip}-%{version}.dist-info
 %endif
 
 %if %{with python3}
@@ -243,6 +263,7 @@ install -d $RPM_BUILD_ROOT%{_sipfilesdir}
 
 %py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/{sip,PyQt5_sip}-%{version}.dist-info
 %endif
 
 %clean
@@ -259,11 +280,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{py_sitedir}/sip.so
 
-%files -n python-PyQt5-sip
-%defattr(644,root,root,755)
-%dir %{py_sitedir}/PyQt5
-%attr(755,root,root) %{py_sitedir}/PyQt5/sip.so
-
 %files -n python-sip-devel
 %defattr(644,root,root,755)
 %{py_sitedir}/sipconfig.py
@@ -271,19 +287,22 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/sipdistutils.py
 %{py_sitedir}/sipdistutils.py[co]
 %{py_sitedir}/sip.pyi
-%{py_sitedir}/PyQt5/sip.pyi
 %{py_incdir}/sip.h
+
+%files -n python-PyQt5-sip
+%defattr(644,root,root,755)
+%dir %{py_sitedir}/PyQt5
+%attr(755,root,root) %{py_sitedir}/PyQt5/sip.so
+
+%files -n python-PyQt5-sip-devel
+%defattr(644,root,root,755)
+%{py_sitedir}/PyQt5/sip.pyi
 %endif
 
 %if %{with python3}
 %files -n python3-sip
 %defattr(644,root,root,755)
 %attr(755,root,root) %{py3_sitedir}/sip.so
-
-%files -n python3-PyQt5-sip
-%defattr(644,root,root,755)
-%dir %{py3_sitedir}/PyQt5
-%attr(755,root,root) %{py3_sitedir}/PyQt5/sip.so
 
 %files -n python3-sip-devel
 %defattr(644,root,root,755)
@@ -292,6 +311,14 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/__pycache__/sipconfig.cpython-*.py[co]
 %{py3_sitedir}/__pycache__/sipdistutils.cpython-*.py[co]
 %{py3_sitedir}/sip.pyi
-%{py3_sitedir}/PyQt5/sip.pyi
 %{py3_incdir}/sip.h
+
+%files -n python3-PyQt5-sip
+%defattr(644,root,root,755)
+%dir %{py3_sitedir}/PyQt5
+%attr(755,root,root) %{py3_sitedir}/PyQt5/sip.so
+
+%files -n python3-PyQt5-sip-devel
+%defattr(644,root,root,755)
+%{py3_sitedir}/PyQt5/sip.pyi
 %endif
