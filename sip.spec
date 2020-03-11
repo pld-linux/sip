@@ -252,7 +252,8 @@ install -d build-py2-${mod}
 cd build-py2-${mod}
 %{__python} ../configure.py \
 	--sip-module=${mod}.sip \
-	-b %{_bindir} \
+	--no-dist-info \
+	--no-tools \
 	-e %{py_incdir} \
 	-v %{_sipfilesdir} \
 	-d %{py_sitedir} \
@@ -293,7 +294,8 @@ install -d build-py3-${mod}
 cd build-py3-${mod}
 %{__python3} ../configure.py \
 	--sip-module=${mod}.sip \
-	-b %{_bindir} \
+	--no-dist-info \
+	--no-tools \
 	-e %{py3_incdir} \
 	-v %{_sipfilesdir} \
 	-d %{py3_sitedir} \
@@ -323,7 +325,6 @@ for mod in %{?with_pyqt4:PyQt4} %{?with_pyqt5:PyQt5} ; do
 %{__make} -C build-py2-${mod} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/${mod}_sip-%{version}.dist-info
 # ensure content is the same and hardlink
 cmp $RPM_BUILD_ROOT%{py_sitedir}/sip.pyi $RPM_BUILD_ROOT%{py_sitedir}/${mod}/sip.pyi
 ln -f $RPM_BUILD_ROOT%{py_sitedir}/sip.pyi $RPM_BUILD_ROOT%{py_sitedir}/${mod}/sip.pyi
@@ -344,7 +345,6 @@ for mod in %{?with_pyqt4:PyQt4} %{?with_pyqt5:PyQt5} ; do
 %{__make} -C build-py3-${mod} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/${mod}_sip-%{version}.dist-info
 # ensure content is the same and hardlink
 cmp $RPM_BUILD_ROOT%{py3_sitedir}/sip.pyi $RPM_BUILD_ROOT%{py3_sitedir}/${mod}/sip.pyi
 ln -f $RPM_BUILD_ROOT%{py3_sitedir}/sip.pyi $RPM_BUILD_ROOT%{py3_sitedir}/${mod}/sip.pyi
