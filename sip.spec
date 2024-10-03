@@ -1,15 +1,19 @@
 #
 # Conditional build:
-%bcond_without	python2	# CPython 2.x modules
-%bcond_without	python3	# CPython 3.x modules
-%bcond_without	pyqt4	# PyQt4.sip module
-%bcond_without	pyqt5	# PyQt5.sip module
+%bcond_with	python2		# CPython 2.x modules
+%bcond_without	python3		# CPython 3.x modules
+%bcond_with	pyqt4		# PyQt4.sip module
+%bcond_with	pyqt5		# PyQt5.sip module
+%bcond_without	obsolete_py2	# obsolete python-sip packages
 
+%if %{with python2}
+%undefine	obsolete_py2
+%endif
 Summary:	Python bindings generator for C++ class libraries
 Summary(pl.UTF-8):	Generator powiązań Pythona z bibliotekami klas C++
 Name:		sip
 Version:	4.19.25
-Release:	3
+Release:	4
 Epoch:		2
 License:	SIP (redistributable, see LICENSE) or GPL v2 or GPL v3
 Group:		Development/Languages/Python
@@ -132,6 +136,9 @@ Summary:	Python 3 module needed by SIP generated bindings
 Summary(pl.UTF-8):	Moduł Pythona 3 wymagany przez wiązania wygenerowane przez SIP
 Group:		Libraries/Python
 Requires:	python3-libs
+%if %{with obsolete_py2}
+Obsoletes:	python-sip < %{epoch}:%{version}-%{release}
+%endif
 
 %description -n python3-sip
 SIP generates Python bindings for C++ class libraries from a set of
@@ -150,6 +157,9 @@ Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	python3-sip = %{epoch}:%{version}-%{release}
 Requires:	python3-devel >= 1:3.2
+%if %{with obsolete_py2}
+Obsoletes:	python-sip-devel < %{epoch}:%{version}-%{release}
+%endif
 
 %description -n python3-sip-devel
 Python 3 development files needed to build bindings for C++ classes
@@ -164,6 +174,9 @@ Summary:	Python 3 module needed by SIP generated bindings for PyQt4
 Summary(pl.UTF-8):	Moduł Pythona 3 wymagany przez wiązania wygenerowane przez SIP dla PyQt4
 Group:		Libraries/Python
 Requires:	python3-libs
+%if %{with obsolete_py2}
+Obsoletes:	python-PyQt4-sip < %{epoch}:%{version}-%{release}
+%endif
 
 %description -n python3-PyQt4-sip
 SIP generates Python bindings for C++ class libraries from a set of
@@ -181,6 +194,9 @@ Summary(pl.UTF-8):	Pliki programistyczne Pythona 3 potrzebne do budowania wiąza
 Group:		Development/Libraries
 Requires:	python3-PyQt4-sip = %{epoch}:%{version}-%{release}
 Requires:	python3-sip-devel = %{epoch}:%{version}-%{release}
+%if %{with obsolete_py2}
+Obsoletes:	python-PyQt4-sip-devel < %{epoch}:%{version}-%{release}
+%endif
 
 %description -n python3-PyQt4-sip-devel
 Python 3 development files needed to build bindings for C++ classes
@@ -195,6 +211,9 @@ Summary:	Python 3 module needed by SIP generated bindings for PyQt5
 Summary(pl.UTF-8):	Moduł Pythona 3 wymagany przez wiązania wygenerowane przez SIP dla PyQt5
 Group:		Libraries/Python
 Requires:	python3-libs
+%if %{with obsolete_py2}
+Obsoletes:	python-PyQt5-sip < %{epoch}:%{version}-%{release}
+%endif
 
 %description -n python3-PyQt5-sip
 SIP generates Python bindings for C++ class libraries from a set of
@@ -212,6 +231,9 @@ Summary(pl.UTF-8):	Pliki programistyczne Pythona 3 potrzebne do budowania wiąza
 Group:		Development/Libraries
 Requires:	python3-PyQt5-sip = %{epoch}:%{version}-%{release}
 Requires:	python3-sip-devel = %{epoch}:%{version}-%{release}
+%if %{with obsolete_py2}
+Obsoletes:	python-PyQt5-sip-devel < %{epoch}:%{version}-%{release}
+%endif
 
 %description -n python3-PyQt5-sip-devel
 Python 3 development files needed to build bindings for C++ classes
